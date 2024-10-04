@@ -11,6 +11,81 @@
   </head>
 
   <body>
-    <%= yield %>
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Niu Foods</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="flex-shrink-0 p-3">
+          <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <span class="fs-5 fw-semibold">Dashboard</span>
+          </a>
+          <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                Restaurantes
+              </button>
+              <div class="collapse show" id="home-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li>
+                    <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                      <%= icon("fa-solid", "shop", class: "mx-2") %> Ver
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                      <%= icon("fa-solid", "square-plus", class: "mx-2") %>
+                      Crear
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
+                Mantenedores
+              </button>
+              <div class="collapse show" id="dashboard-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li>
+                    <%= link_to cities_path, class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
+                      <%= icon("fa-solid", "city", class: "mx-2") %> Ciudades
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to communes_path, class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
+                      <%= icon("fa-solid", "tree-city", class: "mx-2") %> Comunas
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to categories_path, class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
+                      <%= icon("fa-solid", "layer-group", class: "mx-2") %> Categorias
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <%= yield %>
+      </main>
+    </div>
+  </div>
+
+
   </body>
 </html>

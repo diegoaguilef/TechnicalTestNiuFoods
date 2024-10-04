@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :devices
+  get 'home/index'
+  root 'home#index'
   resources :categories
-  resources :restaurants
+  resources :restaurants do
+    resources :devices
+  end
   resources :communes
   resources :cities
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
