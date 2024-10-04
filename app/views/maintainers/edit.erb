@@ -1,0 +1,21 @@
+<div class="dashboard__body dashboard__body--md">
+  <div class="dashboard__body__header">
+    <h3 class="dashboard__title">Editar <%= t("activerecord.models.#{params[:entity_class].singularize}.one") %></h3>
+  </div>
+  <div class="dasboard__body__body">
+    <div class="cols">
+      <div class="col-xs-12">
+        <div class="card">
+          <div class="card__header">
+            <div class="card__button card__button-create">
+              <%= link_to :back, class: "btn btn--light" do %>
+                Volver <span class="material-symbols-rounded">arrow_left_alt</span>
+              <% end %>
+            </div>
+          </div>
+          <%= render "form", entity: @entity %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

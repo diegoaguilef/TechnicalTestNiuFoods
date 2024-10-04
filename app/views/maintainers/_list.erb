@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card__header">
+    <h4 class="card__title">Listado de <%= t("maintainers.#{params[:entity_class] || 'channels'}") %></h4>
+    <div class="card__button card__button-create">
+      <%= link_to new_maintainer_path, class: "btn" do %>
+        Crear <%= t("activerecord.models.#{params[:entity_class].singularize}.one") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="card__body">
+    <div class="card__table">
+      <table>
+        <thead>
+        <tr>
+          <% @model.column_names.each do |attr| %>
+            <th><%= t attr, scope: %W[activerecord attributes #{params[:entity_class].singularize}] %></th>
+          <% end %>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @entities.each do |entity| %>
+          <tr>
+            <% entity.attribute_names.each do |attr| %>
+              <td><%= entity[attr] %></td>
+            <% end %>
+            <td>
+              <div class="card__table__actions">
+                <div class="card__table__action">
+                  <%= link_to edit_maintainer_path(entity), class: "edit-link" do %>
+                    <span class="material-symbols-rounded">edit</span>
+                  <% end %>
+                </div>
+                <div class="card__table__action">
+                  <a href="#"><span class="material-symbols-rounded">delete</span></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

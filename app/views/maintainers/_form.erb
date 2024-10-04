@@ -1,0 +1,48 @@
+<% form_options = if entity.new_record?
+                    { url: maintainers_path(entity_class: params[:entity_class]), method: :post }
+                  else
+                    { url: "/maintainers/#{entity.id}?entity_class=#{params[:entity_class]}", method: :patch }
+                  end
+%>
+<%= form_with(scope: entity, url: form_options[:url], method: form_options[:method], multipart: true) do |form| %>
+  <% if entity.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(entity.errors.count, "error") %> no permitieron guardar:</h2>
+      <ul>
+        <% entity.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <% entity.class.attribute_names.each do |attr| %>
+          <% next if %w[id created_at updated_at].include? attr %>
+          <% if attr.include?("_id") %>
+            <div class="col-12">
+              <%= label :entity, attr, class: 'form-label' %>
+              <%= entity_collection attr, { include_blank: 'Seleccionar' } %>
+            </div>
+          <% elsif @model.type_for_attribute(attr).to_s.include? 'Text' %>
+            <div class="col-12">
+              <%= label :entity, attr, class: 'form-label' %>
+              <%= rich_text_area :entity, attr, class: 'form-control' %>
+            </div>
+          <% else %>
+            <div class="col-12">
+              <%= label :entity, attr, class: 'form__title' %>
+              <%= text_field :entity, attr, class: 'form-control' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="row my-3">
+        <div class="col-12">
+          <%= form.submit class: 'btn btn-success' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

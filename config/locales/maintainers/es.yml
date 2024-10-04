@@ -1,0 +1,28 @@
+es:
+  activerecord:
+    models:
+      category:
+        one: Categoría
+        other: Categorías
+      city:
+        one: Ciudad
+        other: Ciudades
+      commune:
+        one: Comuna
+        other: Comunas
+    attributes:
+      category:
+        name: Nombre
+        created_at: Fecha Creación
+        updated_at: Fecha Actualización
+      commune:
+        name: Nombre
+        city_id: Ciudad
+        city: Ciudad
+        created_at: Fecha Creación
+        updated_at: Fecha Actualización
+      city:
+        name: Nombre
+        created_at: Fecha Creación
+        updated_at: Fecha Actualización
+

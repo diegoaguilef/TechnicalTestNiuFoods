@@ -9,9 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Niu Foods</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +17,6 @@
     </button>
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-
       </div>
     </div>
   </header>
@@ -58,34 +55,24 @@
               </button>
               <div class="collapse show" id="dashboard-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <%= link_to cities_path, class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
-                      <%= icon("fa-solid", "city", class: "mx-2") %> Ciudades
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to communes_path, class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
-                      <%= icon("fa-solid", "tree-city", class: "mx-2") %> Comunas
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to categories_path, class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
-                      <%= icon("fa-solid", "layer-group", class: "mx-2") %> Categorias
-                    <% end %>
-                  </li>
+                  <% maintainers_list.each_with_index do |maintainer, i| %>
+                    <% current = "current" if params[:entity_class] == maintainer || (i.zero? && params[:entity_class].nil?) %>
+                    <li>
+                      <%= link_to maintainers_path(entity_class: maintainer), class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
+                        <%= icon("fa-solid", "city", class: "mx-2") %> <%= t("maintainers.#{maintainer}") %>
+                      <% end %>
+                    </li>
+                  <% end %>
                 </ul>
               </div>
             </li>
           </ul>
         </div>
       </nav>
-
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <%= yield %>
       </main>
     </div>
   </div>
-
-
   </body>
 </html>

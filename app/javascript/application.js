@@ -5,3 +5,6 @@ import "jquery"
 import "popper"
 import "bootstrap"
 import "./utils/sidebars"
+import Rails from '@rails/ujs';
+
+Rails.start();

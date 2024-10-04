@@ -1,0 +1,9 @@
+<div class="dashboard__menu">
+  <ul>
+    <li class="dashboard__sep">Parámetros</li>
+    <% maintainers_list.each_with_index do |maintainer, i| %>
+      <% current = "current" if params[:entity_class] == maintainer || (i.zero? && params[:entity_class].nil?) %>
+      <li class="<%= current %>"><%= link_to t("maintainers.#{maintainer}"), maintainers_path(entity_class: maintainer) %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,4 @@
+<div class="container">
+  <h3 class="dashboard__title">Crear <%= t("activerecord.models.#{params[:entity_class].singularize}.one") %></h3>
+  <%= render "form", entity: @entity %>
+</div>

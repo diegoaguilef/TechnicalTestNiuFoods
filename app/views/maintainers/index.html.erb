@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <h3 class="dashboard__title">Parámetros</h3>
+  </div>
+  <div class="cols">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="title">Listado de <%= t("maintainers.#{params[:entity_class]}") %></h4>
+        <%= link_to new_maintainer_path(entity_class: params[:entity_class]), class: "btn btn-success" do %>
+          Crear <%= t("activerecord.models.#{params[:entity_class]}.one") %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <% @model.column_names.each do |attr| %>
+              <th><%= t attr, scope: %W[activerecord attributes #{params[:entity_class].singularize}] %></th>
+            <% end %>
+            <th>Acciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @entities.order(:id).each do |entity| %>
+            <tr>
+              <% entity.attribute_names.each do |attr| %>
+                <% if attr.include?("_id") %>
+                  <td><%= entity.send(attr.split("_").first).name %></td>
+                <% else %>
+                  <td><%= entity[attr] %></td>
+                <% end %>
+              <% end %>
+              <td>
+                <div class="btn-group">
+                  <%= link_to edit_maintainer_path(entity, entity_class: params[:entity_class]), class: "btn btn-warning" do %>
+                    <%= icon("fa-solid", "pen-to-square") %>
+                  <% end %>
+                  <%= link_to maintainer_path(entity, entity_class: params[:entity_class]), method: :delete, class: "btn btn-danger" do %>
+                    <%= icon("fa-solid", "trash") %>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
