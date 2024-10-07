@@ -12,21 +12,25 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
+    <%= form.label :address, class: 'form-label' %>
+    <%= form.text_field :address, class: 'form-control' %>
   </div>
 
   <div>
     <%= form.label :commune_id, style: "display: block" %>
-    <%= form.text_field :commune_id %>
+    <%= form.collection_select :commune_id, Commune.all, :id, :name,
+                               { include_blank: 'Seleccionar' },
+                               class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="row mt-3">
+    <div class="col-3">
+      <%= form.submit class: 'btn btn-success' %>
+    </div>
   </div>
 <% end %>

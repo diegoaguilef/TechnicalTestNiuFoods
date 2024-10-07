@@ -31,41 +31,43 @@ router = Category.create(name: "Router")
 
 #restaurant 1
 
-Device.create name: "Transbank", category: pos, restaurant: restaurant, status: ACTIVE
-Device.create name: "RedNet", category: pos, restaurant: restaurant, status: ACTIVE
-Device.create name: "Banco Estado", category: pos, restaurant: restaurant, status: MAINTENANCE
+Device.create name: "Transbank", category: pos, restaurant: restaurant, status: ACTIVE, version: "1.0.0"
+Device.create name: "RedNet", category: pos, restaurant: restaurant, status: ACTIVE, version: "1.0.0"
+Device.create name: "Banco Estado", category: pos, restaurant: restaurant, status: MAINTENANCE, version: "1.0.0"
 
-Device.create name: "Ricoh 1", category: printer, restaurant: restaurant, status: ACTIVE
-Device.create name: "Ricoh 2", category: printer, restaurant: restaurant, status: ACTIVE
+Device.create name: "Ricoh 1", category: printer, restaurant: restaurant, status: ACTIVE, version: "1.0.0"
+Device.create name: "Ricoh 2", category: printer, restaurant: restaurant, status: ACTIVE, version: "1.0.0"
 
-Device.create name: "Caja 1", category: cash_register, restaurant: restaurant, status: ACTIVE
-Device.create name: "Caja 2", category: cash_register, restaurant: restaurant, status: ACTIVE
+Device.create name: "Caja 1", category: cash_register, restaurant: restaurant, status: ACTIVE, version: "1.0.0"
+Device.create name: "Caja 2", category: cash_register, restaurant: restaurant, status: ACTIVE, version: "1.0.0"
 
-Device.create name: "Router Linksys", category: router, restaurant: restaurant, status: ACTIVE
-Device.create name: "Router Cisco", category: router, restaurant: restaurant, status: ERROR
+Device.create name: "Router Linksys", category: router, restaurant: restaurant, status: ACTIVE, version: "1.0.0"
+Device.create name: "Router Cisco", category: router, restaurant: restaurant, status: ERROR, version: "1.0.0"
+
+
 # ------------------------------------------------
 
 #restaurant 2
-Device.create name: "Transbank", category: pos, restaurant: restaurant2, status: ACTIVE
-Device.create name: "RedNet", category: pos, restaurant: restaurant2, status: ACTIVE
-Device.create name: "Banco Estado", category: pos, restaurant: restaurant2, status: ACTIVE
+Device.create name: "Transbank", category: pos, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
+Device.create name: "RedNet", category: pos, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
+Device.create name: "Banco Estado", category: pos, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
 
-Device.create name: "Ricoh 1", category: printer, restaurant: restaurant2, status: ACTIVE
-Device.create name: "Ricoh 2", category: printer, restaurant: restaurant2, status: ACTIVE
+Device.create name: "Ricoh 1", category: printer, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
+Device.create name: "Ricoh 2", category: printer, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
 
-Device.create name: "Caja 1", category: cash_register, restaurant: restaurant2, status: ACTIVE
-Device.create name: "Caja 2", category: cash_register, restaurant: restaurant2, status: ACTIVE
+Device.create name: "Caja 1", category: cash_register, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
+Device.create name: "Caja 2", category: cash_register, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
 
-Device.create name: "Router Linksys", category: router, restaurant: restaurant2, status: ACTIVE
-Device.create name: "Router Cisco", category: router, restaurant: restaurant2, status: ACTIVE
+Device.create name: "Router Linksys", category: router, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
+Device.create name: "Router Cisco", category: router, restaurant: restaurant2, status: ACTIVE, version: "1.0.0"
 # ------------------------------------------------
 
 #restaurant 3
-Device.create name: "Transbank", category: pos, restaurant: restaurant3, status: ACTIVE
-Device.create name: "RedNet", category: pos, restaurant: restaurant3, status: ACTIVE
-Device.create name: "Banco Estado", category: pos, restaurant: restaurant3, status: ACTIVE
+Device.create name: "Transbank", category: pos, restaurant: restaurant3, status: ACTIVE, version: "1.0.0"
+Device.create name: "RedNet", category: pos, restaurant: restaurant3, status: ACTIVE, version: "1.0.0"
+Device.create name: "Banco Estado", category: pos, restaurant: restaurant3, status: ACTIVE, version: "1.0.0"
 
-Device.create name: "Ricoh 1", category: printer, restaurant: restaurant3, status: ACTIVE
-Device.create name: "Ricoh 2", category: printer, restaurant: restaurant3, status: ERROR
+Device.create name: "Ricoh 1", category: printer, restaurant: restaurant3, status: ACTIVE, version: "1.0.0"
+Device.create name: "Ricoh 2", category: printer, restaurant: restaurant3, status: ERROR, version: "1.0.0"
 
-Device.create name: "Caja 1", category: cash_register, restaurant: restaurant3, status: ACTIVE
+Device.create name: "Caja 1", category: cash_register, restaurant: restaurant3, status: ACTIVE, version: "1.0.0"

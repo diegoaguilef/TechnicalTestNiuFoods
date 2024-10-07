@@ -1,10 +1,41 @@
 <p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <%= render @device %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Actualizaciones</h5>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Versión</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @device.updates.each do |update| %>
+          <tr>
+            <td><%= update.version %></td>
+            <td><%= update.created_at %></td>
+            <td><%= status_badge update.status %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<%= render @device %>
+<div class="container row">
+  <div class="col 4">
+    <%= link_to "Volver", restaurant_path(@device.restaurant), class: 'btn btn-primary' %>
+  </div>
+  <div class="col">
+    <%= button_to "Eliminar dispositivo",
+                  restaurant_device_path(@device.restaurant, @device),
+                  method: :delete, class: 'btn btn-danger float-end' %>
+  </div>
 
-<div>
-  <%= link_to "Edit this device", edit_device_path(@device) %> |
-  <%= link_to "Back to devices", devices_path %>
-
-  <%= button_to "Destroy this device", @device, method: :delete %>
 </div>

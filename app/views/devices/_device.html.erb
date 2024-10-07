@@ -1,27 +1,32 @@
-<div id="<%= dom_id device %>">
-  <p>
-    <strong>Name:</strong>
-    <%= device.name %>
-  </p>
+<div id="<%= dom_id device %>" class="row">
+  <div class="col-8">
+    <p>
+      <strong>Nombre:</strong>
+      <%= device.name %>
+    </p>
 
-  <p>
-    <strong>Version:</strong>
-    <%= device.version %>
-  </p>
+    <p>
+      <strong>Version:</strong>
+      <%= device.version %>
+    </p>
 
-  <p>
-    <strong>Status:</strong>
-    <%= device.status %>
-  </p>
+    <p>
+      <strong>Status:</strong>
+      <%= status_badge device.status %>
+    </p>
 
-  <p>
-    <strong>Category:</strong>
-    <%= device.category_id %>
-  </p>
+    <p>
+      <strong>Categoría:</strong>
+      <%= device.category.name %>
+    </p>
 
-  <p>
-    <strong>Restaurant:</strong>
-    <%= device.restaurant_id %>
-  </p>
+    <p>
+      <strong>Restaurant:</strong>
+      <%= device.restaurant.name %>
+    </p>
+  </div>
+  <div class="col-4">
+    <%= link_to "Editar", edit_restaurant_device_path(device.restaurant, device), class: 'btn btn-sm btn-success float-end' %>
+  </div>
 
 </div>

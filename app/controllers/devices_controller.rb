@@ -1,5 +1,6 @@
 class DevicesController < ApplicationController
   before_action :set_device, only: %i[ show edit update destroy ]
+  before_action :set_restaurant, only: %i[ new create edit update destroy ]
 
   # GET /devices or /devices.json
   def index
@@ -22,10 +23,10 @@ class DevicesController < ApplicationController
   # POST /devices or /devices.json
   def create
     @device = Device.new(device_params)
-
+    @device.restaurant = @restaurant
     respond_to do |format|
       if @device.save
-        format.html { redirect_to @device, notice: "Device was successfully created." }
+        format.html { redirect_to restaurant_path(@restaurant), notice: "Dispositivo creado." }
         format.json { render :show, status: :created, location: @device }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class DevicesController < ApplicationController
   def update
     respond_to do |format|
       if @device.update(device_params)
-        format.html { redirect_to @device, notice: "Device was successfully updated." }
+        format.html { redirect_to @device, notice: "Dispositivo actualizado." }
         format.json { render :show, status: :ok, location: @device }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class DevicesController < ApplicationController
     @device.destroy
 
     respond_to do |format|
-      format.html { redirect_to devices_path, status: :see_other, notice: "Device was successfully destroyed." }
+      format.html { redirect_to restaurant_path(@restaurant), status: :see_other, notice: "Dispositivo eliminado." }
       format.json { head :no_content }
     end
   end
@@ -61,6 +62,10 @@ class DevicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_device
       @device = Device.find(params[:id])
+    end
+
+    def set_restaurant
+      @restaurant = Restaurant.find(params[:restaurant_id])
     end
 
     # Only allow a list of trusted parameters through.

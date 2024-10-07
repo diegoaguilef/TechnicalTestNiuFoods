@@ -1,10 +1,39 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @restaurant %>
-
-<div>
-  <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
-  <%= link_to "Back to restaurants", restaurants_path %>
-
-  <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
+<p class="alert"><%= notice %></p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <%= render @restaurant %>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title">Dispositivos</h5>
+        </div>
+        <div class="col">
+          <%= link_to "Nuevo Dispositivo", new_restaurant_device_path(@restaurant), class: 'btn btn-sm btn-success float-end' %>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Versión</th>
+          <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @restaurant.devices.each do |device| %>
+          <tr>
+            <td><%= link_to device.name, restaurant_device_path(@restaurant, device) %></td>
+            <td><%= device.version %></td>
+            <td><%= status_badge device.status %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <%= button_to "Eliminar restaurant", @restaurant, method: :delete, class: 'btn btn-sm btn-danger float-end' %>
 </div>

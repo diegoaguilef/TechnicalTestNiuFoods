@@ -25,7 +25,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, notice: "Restaurant was successfully created." }
+        format.html { redirect_to @restaurant, notice: "Restaurant creado." }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to @restaurant, notice: "Restaurant was successfully updated." }
+        format.html { redirect_to @restaurant, notice: "Restaurant actualizado." }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     respond_to do |format|
-      format.html { redirect_to restaurants_path, status: :see_other, notice: "Restaurant was successfully destroyed." }
+      format.html { redirect_to restaurants_path, status: :see_other, notice: "Restaurant eliminado." }
       format.json { head :no_content }
     end
   end

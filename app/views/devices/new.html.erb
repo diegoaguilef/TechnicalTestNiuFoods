@@ -1,9 +1,15 @@
-<h1>New device</h1>
-
-<%= render "form", device: @device %>
-
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5>Nuevo Dispositivo</h5>
+    </div>
+    <div class="card-body">
+      <%= render "form", device: @device %>
+    </div>
+  </div>
+</div>
 <br>
 
 <div>
-  <%= link_to "Back to devices", devices_path %>
+  <%= link_to "Restaurantes", restaurants_path, class: 'btn btn-primary' %>
 </div>

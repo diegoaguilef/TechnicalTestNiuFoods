@@ -1,6 +1,12 @@
 es:
   activerecord:
     models:
+      restaurant:
+        one: Restaurante
+        other: Restaurantes
+      device:
+        one: Dispositivo
+        other: Dispositivos
       category:
         one: Categoría
         other: Categorías
@@ -25,4 +31,17 @@ es:
         name: Nombre
         created_at: Fecha Creación
         updated_at: Fecha Actualización
+      restaurant:
+        name: Nombre
+        address: Dirección
+        commune: Comuna
+        commune_id: Comuna
+      device:
+        name: Nombre
+        version: Versión
+        status: Estado
+        created_at: Fecha Creación
+        updated_at: Fecha Actualización
+        category: Categoría
+        category_id: Categoría
 

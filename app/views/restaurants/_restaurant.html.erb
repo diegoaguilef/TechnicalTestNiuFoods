@@ -1,17 +1,21 @@
-<div id="<%= dom_id restaurant %>">
-  <p>
-    <strong>Name:</strong>
-    <%= restaurant.name %>
-  </p>
+<div id="<%= dom_id restaurant %>" class="row">
+  <div class="col-8">
+    <p>
+      <strong>Nombre:</strong>
+      <%= restaurant.name %>
+    </p>
 
-  <p>
-    <strong>Address:</strong>
-    <%= restaurant.address %>
-  </p>
+    <p>
+      <strong>Dirección:</strong>
+      <%= restaurant.address %>
+    </p>
 
-  <p>
-    <strong>Commune:</strong>
-    <%= restaurant.commune_id %>
-  </p>
-
+    <p>
+      <strong>Comuna:</strong>
+      <%= restaurant.commune.name %>
+    </p>
+  </div>
+  <div class="col-4">
+    <%= link_to "Editar", edit_restaurant_path(restaurant), class: 'btn btn-sm btn-success float-end' %>
+  </div>
 </div>

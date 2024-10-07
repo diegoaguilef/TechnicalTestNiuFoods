@@ -1,14 +1,30 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Restaurants</h1>
-
-<div id="restaurants">
-  <% @restaurants.each do |restaurant| %>
-    <%= render restaurant %>
-    <p>
-      <%= link_to "Show this restaurant", restaurant %>
-    </p>
-  <% end %>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1>Restaurantes</h1>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Comuna</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @restaurants.each do |restaurant| %>
+            <tr>
+              <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+              <td><%= restaurant.address %></td>
+              <td><%= restaurant.commune.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New restaurant", new_restaurant_path %>
+<%= link_to "Nuevo Restaurant", new_restaurant_path, class: 'btn btn-sm btn-success' %>

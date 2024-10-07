@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_03_230228) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_07_154654) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_03_230228) do
   create_table "devices", force: :cascade do |t|
     t.string "name"
     t.float "version"
-    t.string "status"
+    t.integer "status", null: false
     t.bigint "category_id", null: false
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
@@ -55,8 +55,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_03_230228) do
     t.index ["commune_id"], name: "index_restaurants_on_commune_id"
   end
 
+  create_table "updates", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "version"
+    t.string "status"
+    t.string "details", null: false
+    t.bigint "device_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_updates_on_device_id"
+  end
+
   add_foreign_key "communes", "cities"
   add_foreign_key "devices", "categories"
   add_foreign_key "devices", "restaurants"
   add_foreign_key "restaurants", "communes"
+  add_foreign_key "updates", "devices"
 end
