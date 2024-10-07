@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_07_154654) do
   create_table "updates", force: :cascade do |t|
     t.string "name", null: false
     t.string "version"
-    t.string "status"
+    t.integer "status"
     t.string "details", null: false
     t.bigint "device_id", null: false
     t.datetime "created_at", null: false

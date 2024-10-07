@@ -5,6 +5,10 @@ class DevicesController < ApplicationController
   # GET /devices or /devices.json
   def index
     @devices = Device.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @devices.as_json(include: :updates) }
+    end
   end
 
   # GET /devices/1 or /devices/1.json
@@ -39,8 +43,8 @@ class DevicesController < ApplicationController
   def update
     respond_to do |format|
       if @device.update(device_params)
-        format.html { redirect_to @device, notice: "Dispositivo actualizado." }
-        format.json { render :show, status: :ok, location: @device }
+        format.html { redirect_to restaurant_device_path(@restaurant, @device), notice: "Dispositivo actualizado." }
+        format.json { render :show, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @device.errors, status: :unprocessable_entity }
@@ -70,6 +74,13 @@ class DevicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def device_params
-      params.require(:device).permit(:name, :version, :status, :category_id, :restaurant_id)
+      params.require(:device).permit(
+        :name,
+        :version,
+        :status,
+        :category_id,
+        :restaurant_id,
+        updates_attributes: %i[id name version status details]
+      )
     end
 end

@@ -9,7 +9,9 @@
       <table class="table">
         <thead>
         <tr>
+          <th>Nombre</th>
           <th>Versión</th>
+          <th>Detalles</th>
           <th>Fecha</th>
           <th>Estado</th>
         </tr>
@@ -17,7 +19,9 @@
         <tbody>
         <% @device.updates.each do |update| %>
           <tr>
+            <td><%= update.name %></td>
             <td><%= update.version %></td>
+            <td><%= update.details %></td>
             <td><%= update.created_at %></td>
             <td><%= status_badge update.status %></td>
           </tr>

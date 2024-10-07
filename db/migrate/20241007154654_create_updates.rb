@@ -3,7 +3,7 @@ class CreateUpdates < ActiveRecord::Migration[7.0]
     create_table :updates do |t|
       t.string :name, null: false
       t.string :version
-      t.string :status
+      t.integer :status
       t.string :details, null: false
       t.references :device, null: false, foreign_key: true
 
