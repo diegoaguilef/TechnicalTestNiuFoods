@@ -78,3 +78,9 @@ gem "bootstrap", "~> 5.3"
 gem "font-awesome-sass", "~> 6.5"
 
 gem "dotenv-rails", "~> 3.1", groups: [:development, :test]
+
+gem "sidekiq", "~> 7.3"
+
+gem "sidekiq-cron", "~> 1.12"
+
+gem "redis", "~> 5.3"

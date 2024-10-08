@@ -10,3 +10,5 @@ pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.8
 pin "jquery" # @3.7.1
 pin "popper", to: 'popper.js', preload: true
 pin "@rails/ujs", to: "@rails--ujs.js" # @7.1.3
+pin "@rails/actioncable", to: "actioncable.esm.js"
+pin_all_from "app/javascript/channels", under: "channels"

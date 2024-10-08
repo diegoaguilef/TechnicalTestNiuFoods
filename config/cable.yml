@@ -1,5 +1,7 @@
 development:
-  adapter: async
+  adapter: redis
+  url: <%= ENV['REDIS_URL'] %>
+  channel_prefix: TechnicalTestNiuFoods_development
 
 test:
   adapter: test

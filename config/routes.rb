@@ -1,6 +1,6 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
-  get 'csrf_token', to: 'application#csrf_token'
-
+  mount Sidekiq::Web => "/sidekiq"
   get 'home/index'
   root 'home#index'
   resources :restaurants do

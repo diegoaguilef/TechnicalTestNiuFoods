@@ -1,0 +1,4 @@
+refresh_dashboard:
+  cron: "every 5s"
+  class: "SyncDevicesJob"
+  queue: updates

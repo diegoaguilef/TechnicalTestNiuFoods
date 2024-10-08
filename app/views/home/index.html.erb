@@ -1,25 +1,10 @@
-<div class="container">
+<div class="container" data-controller="dashboard">
   <div class="card">
     <div class="card-header">
       <h1>Estado general restaurantes</h1>
     </div>
-    <div class="card-body">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @restaurants.each do |restaurant| %>
-            <tr>
-              <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
-              <td><%= status_badge restaurant.status %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="card-body" id="restaurants-statuses">
+      <%= render 'restaurants_statuses_table', restaurants: @restaurants %>
     </div>
   </div>
 </div>
