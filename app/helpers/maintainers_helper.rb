@@ -1,6 +1,16 @@
 module MaintainersHelper
   def maintainers_list
-    %w[city commune category]
+    [
+      { name: 'city',
+        icon: 'building'
+      },
+      { name: 'commune',
+        icon: 'building-columns'
+      },
+      { name: 'category',
+        icon: 'list'
+      }
+    ]
   end
 
   def partial_action

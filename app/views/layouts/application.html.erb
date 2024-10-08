@@ -56,10 +56,9 @@
               <div class="collapse show" id="dashboard-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                   <% maintainers_list.each_with_index do |maintainer, i| %>
-                    <% current = "current" if params[:entity_class] == maintainer || (i.zero? && params[:entity_class].nil?) %>
                     <li>
-                      <%= link_to maintainers_path(entity_class: maintainer), class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
-                        <%= icon("fa-solid", "city", class: "mx-2") %> <%= t("maintainers.#{maintainer}") %>
+                      <%= link_to maintainers_path(entity_class: maintainer[:name]), class: "link-body-emphasis d-inline-flex text-decoration-none rounded" do  %>
+                        <%= icon("fa-solid", maintainer[:icon], class: "mx-2") %> <%= t("maintainers.#{maintainer[:name]}") %>
                       <% end %>
                     </li>
                   <% end %>
