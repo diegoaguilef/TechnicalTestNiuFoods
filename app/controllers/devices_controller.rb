@@ -13,6 +13,10 @@ class DevicesController < ApplicationController
 
   # GET /devices/1 or /devices/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @device.as_json(include: :updates) }
+    end
   end
 
   # GET /devices/new

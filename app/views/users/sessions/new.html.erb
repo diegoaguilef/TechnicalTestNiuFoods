@@ -1,0 +1,19 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <img class="mb-4 bg-dark" src="<%= image_path 'logo-niu-foods' %>" alt="" width="72" height="57">
+  <h1 class="h3 mb-3 fw-normal">Inicar sesión</h1>
+
+  <div class="form-floating">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                      class: "form-control", id: "floatingInput",
+                      placeholder: "name@example.com" %>
+    <label for="floatingInput">Email</label>
+  </div>
+  <div class="form-floating">
+    <%= f.password_field :password, autocomplete: "current-password",
+                         class: "form-control",
+                         id: "floatingPassword",
+                         placeholder: "Password" %>
+    <label for="floatingPassword">Password</label>
+  </div>
+  <button class="btn btn-primary w-100 py-2" type="submit">Iniciar Sesión</button>
+<% end %>

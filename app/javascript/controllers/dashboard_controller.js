@@ -3,7 +3,6 @@ import consumer from "../channels/consumer";
 export default class extends Controller {
   connect() {
     if(!this.channel) this.channel = this.createChannel();
-    console.log(this.channel)
   }
 
   disconnect() {
@@ -15,7 +14,6 @@ export default class extends Controller {
       channel: "DashboardChannel"
     }, {
       received: (data) => {
-        console.log('Received data:', data)
         this.updateTable(data.restaurants_table)
       }
     })

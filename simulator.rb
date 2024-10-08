@@ -4,20 +4,40 @@ require 'uri'
 
 # URL base de la API
 API_BASE_URL = 'http://localhost:3000'
-API_TOKEN = 'olaknwsdbuidkkcjw39qp2owdf'
+@auth_token = nil
+def get_auth_token
+  uri = URI("#{API_BASE_URL}/users/sign_in.json")
+  http = Net::HTTP.new(uri.host.to_s, uri.port)
+  http.use_ssl = true if uri.scheme == 'https'
 
+  request = Net::HTTP::Post.new(uri.path.to_s, {
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json'
+  })
+
+  request.body = {
+    user: {
+      email: 'admin@niufoods.cl',
+      password: 'admin123'
+    }
+  }.to_json
+
+  response = http.request(request)
+  response.header['Authorization']
+end
+
+@auth_token ||= get_auth_token
 def fetch_restaurants
+
   uri = URI("#{API_BASE_URL}/restaurants.json")
   http = Net::HTTP.new(uri.host.to_s, uri.port)
   http.use_ssl = true if uri.scheme == 'https'
 
   response = http.get(uri.path.to_s, {
     'Content-Type' => 'application/json',
-    'Authorization' => API_TOKEN
+    'Authorization' => @auth_token
   })
-  restaurants = JSON.parse(response.body)
-  puts "Restaurantes obtenidos: #{restaurants.size}"
-  restaurants
+  JSON.parse(response.body)
 end
 
 def fetch_devices(restaurant_id)
@@ -27,7 +47,7 @@ def fetch_devices(restaurant_id)
 
   response = http.get(uri.path.to_s, {
     'Content-Type' => 'application/json',
-    'Authorization' => API_TOKEN
+    'Authorization' => get_auth_token
   })
   devices = JSON.parse(response.body)
   puts "Dispositivos obtenidos: #{devices.size}"
@@ -40,7 +60,7 @@ def fetch_device(restaurant_id, device_id)
   http.use_ssl = true if uri.scheme == 'https'
 
   response = http.get(uri.path.to_s, {
-    'Authorization' => API_TOKEN
+    'Authorization' => @auth_token
   })
   devices = JSON.parse(response.body)
   devices
@@ -52,7 +72,7 @@ def update_device(restaurant_id, device)
   http.use_ssl = true if uri.scheme == 'https'
   request = Net::HTTP::Put.new(uri.path.to_s, {
     'Content-Type' => 'application/json',
-    'Authorization' => API_TOKEN
+    'Authorization' => @auth_token
   })
 
   request.body = device.to_json

@@ -10,6 +10,8 @@ WARNING = "warning".freeze
 ACTIVE = "active".freeze
 MAINTENANCE = "maintenance".freeze
 
+admin = User.create(name: "admin", email: "admin@niufoods.cl", password: "admin123", role: "admin")
+
 city = City.create(name: "Santiago")
 city2 = City.create(name: "Viña del Mar")
 

@@ -4,10 +4,18 @@ class RestaurantsController < ApplicationController
   # GET /restaurants or /restaurants.json
   def index
     @restaurants = Restaurant.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @restaurants.as_json(methods: [:status]) }
+    end
   end
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @restaurant.as_json(methods: [:status]) }
+    end
   end
 
   # GET /restaurants/new
