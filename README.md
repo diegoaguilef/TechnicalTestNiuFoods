@@ -1,8 +1,11 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
+This is Test project for NiuFoods. The project is a simple API to manage devices and updates for a restaurant. 
+The project has a simple admin panel to manage devices and updates, and a simulator script to send device information to the API.
+The admin panel has the following features:
+- List, create, update and delete all available resources (Devices, Categories, Restaurants, cities, communes)
+- Dashboard with a list of restaurants and their status that refreshes every 15 seconds, permitting to see the status of the restaurants in real-time
+- A simple login system with a role-based system (admin, user)
+- A simple API to manage devices and updates
 ## Requirements
 
 * Ruby version: 3.2.2
