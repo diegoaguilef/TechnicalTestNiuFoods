@@ -57,8 +57,28 @@ application up and running.
     ```
     ruby simulator.rb
     ```
-- The script will create a new user and will create a new order for that user every 5 seconds
-
+- The script will ask for the email and password of the user to login
+- The script will send device information to the API every 5 seconds with the following format
+    ```
+    device = {
+      "id" => 23,
+      "name" => "Ricoh 2",
+      "version" => 1.0,
+      "status" => "error",
+      "category_id" => 2,
+      "restaurant_id" => 3,
+      "updates_attributes" => [
+        {
+          "name" => "Revision 1",
+          "version" => 1.0,
+          "status" => 'active',
+          "details" => 'edf9iehubgtijw3efngberynigowefw'
+        },
+        ...
+      ]
+  }
+  ```
+- on each request, the script will update the device status and create a new update for the device
 ## Admin credentials
 - To access the admin panel or login into app with the simulator script, you can
 use the existing user or create a new one and set the role to admin in the seed file

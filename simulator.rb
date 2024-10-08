@@ -78,9 +78,10 @@ def update_device(restaurant_id, device)
   request.body = device.to_json
 
   response = http.request(request)
-  puts "Dispositivo atualizado #{device['id']}: #{response.code} #{response.message}"
+  puts "#{response.code} #{response.message}"
 end
 
+# restaurant id = 3
 device = {
   "id" => 23,
   "name" => "Ricoh 2",
@@ -95,32 +96,23 @@ device = {
       "version" => 1.0,
       "status" => 'active',
       "details" => 'edf9iehubgtijw3efngberynigowefw'
-    },
-    {
-      "name" => "Revision 2",
-      "version" => 1.2,
-      "status" => 'error',
-      "details" => 'minor changes'
-    },
-    {
-      "name" => "Revision 3",
-      "version" => 1.3,
-      "status" => 'warning',
-      "details" => 'minor ssss'
-    },
-    {
-      "name" => "Revision 4",
-      "version" => 1.4,
-      "status" => 'error',
-      "details" => 'minor ssss'
-    },
-    {
-      "name" => "Revision 5",
-      "version" => 1.5,
-      "status" => 'active',
-      "details" => 'minor ssss'
     }
   ]
 }
 
-update_device(device['restaurant_id'], device)
+
+loop do
+  update_device(device['restaurant_id'], device)
+  sleep 5 # Intervalo de tiempo en segundos
+  statuses = %w[active maintenance warning error]
+  revision = rand(1..100)
+  version = rand(1.0..10.0).round(2)
+  device['updates_attributes'].append(
+    {
+      "name" => "Revision #{revision}",
+      "version" => version,
+      "status" => statuses.sample,
+      "details" => "#{version} apply_device_update example test with revision #{revision}"
+    }
+  )
+end
