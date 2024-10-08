@@ -81,10 +81,6 @@ def update_device(restaurant_id, device)
   puts "Dispositivo atualizado #{device['id']}: #{response.code} #{response.message}"
 end
 
-fetch_restaurants.each do |restaurant|
-  pp fetch_devices(restaurant['id'])
-end
-
 device = {
   "id" => 23,
   "name" => "Ricoh 2",
@@ -92,15 +88,13 @@ device = {
   "status" => "error",
   "category_id" => 2,
   "restaurant_id" => 3,
-  "created_at" => "2024-10-07T17:37:49.825Z",
-  "updated_at" => "2024-10-07T17:37:49.825Z",
   "updates_attributes" => [
     {
 
       "name" => "Revision 1",
       "version" => 1.0,
       "status" => 'active',
-      "details" => 'minor changes'
+      "details" => 'edf9iehubgtijw3efngberynigowefw'
     },
     {
       "name" => "Revision 2",
@@ -112,6 +106,18 @@ device = {
       "name" => "Revision 3",
       "version" => 1.3,
       "status" => 'warning',
+      "details" => 'minor ssss'
+    },
+    {
+      "name" => "Revision 4",
+      "version" => 1.4,
+      "status" => 'error',
+      "details" => 'minor ssss'
+    },
+    {
+      "name" => "Revision 5",
+      "version" => 1.5,
+      "status" => 'active',
       "details" => 'minor ssss'
     }
   ]

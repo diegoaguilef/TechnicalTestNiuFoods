@@ -9,6 +9,6 @@ class Update < ApplicationRecord
   private
 
   def apply_device_update
-    device.update(status: status, version: version)
+    device.update!(status: status, version: version)
   end
 end

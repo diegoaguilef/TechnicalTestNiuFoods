@@ -1,4 +1,4 @@
 refresh_dashboard:
-  cron: "every 5s"
-  class: "SyncDevicesJob"
+  cron: "every 15s"
+  class: "RefreshDashboardJob"
   queue: updates
