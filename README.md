@@ -3,22 +3,72 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+* Ruby version: 3.2.2
+* Rails Version 7.0.8
+* System dependencies: redis, postgresql
 
-* System dependencies
-
-* Configuration
+## Configuration
 
 * Database creation
+    
+    ```
+    rails db:create
+    ```
 
 * Database initialization
+    ```
+    rails db:migrate db:seed
+    ```
 
-* How to run the test suite
+* Enviroment variables
 
-* Services (job queues, cache servers, search engines, etc.)
+    ```
+    cp .env.example .env
+    ```
 
-* Deployment instructions
+    ```
+    # .env
+    REDIS_URL=redis://{host}:{port}/{db}
+    RAILS_MASTER_KEY={master_key}
+    ```
+## How to run development environment
+- Install Ruby dependencies
+    ```
+    bundle install
+    ```
+- Run redis server (as you have installed it)
 
-* ...
+    ```
+    redis-server
+    ```
+- Run sidekiq for background jobs
+    ```
+    bundle exec sidekiq
+    ```
+- Run the Rails server
+    ```
+    rails s
+    ```
+
+## How to run simulator script
+- Run the script located in the root of the project
+    ```
+    ruby simulator.rb
+    ```
+- The script will create a new user and will create a new order for that user every 5 seconds
+
+## Admin credentials
+- To access the admin panel or login into app with the simulator script, you can
+use the existing user or create a new one and set the role to admin in the seed file
+
+    ```
+    # db/seeds.rb
+    User.create(email: 'test@user.cl', password: '123456', role: 'admin')
+    ```
+  
+Then Reinitialize the database
+    ```
+    rails db:drop db:create db:migrate db:seed
+    ```
